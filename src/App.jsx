@@ -16,7 +16,7 @@ const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
       retry: 2,
-      staleTime: 300000,
+      staleTime: 300000, 
     },
   },
 });
@@ -24,23 +24,19 @@ const queryClient = new QueryClient({
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <AppLayout />,
+    element: (
+      <ProtectedRoute>
+        <AppLayout />
+      </ProtectedRoute>
+    ),
     children: [
       {
         index: true,
-        element: (
-          <ProtectedRoute>
-            <Dashboard />
-          </ProtectedRoute>
-        ),
+        element: <Dashboard />,
       },
       {
         path: "/certificates",
-        element: (
-          <ProtectedRoute>
-            <Certificates />,
-          </ProtectedRoute>
-        ),
+        element: <Certificates />,
       },
     ],
   },
@@ -60,21 +56,21 @@ const router = createBrowserRouter([
     path: "/validate",
     element: (
       <ProtectedRoute>
-        <Validate />,
+        <Validate />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: "/validate/:id",
+    element: (
+      <ProtectedRoute>
+        <ValidationState />
       </ProtectedRoute>
     ),
   },
   {
     path: "*",
     element: <PageNotFound />,
-  },
-  {
-    path: "/validate/:id",
-    element: (
-      <ProtectedRoute>
-        <ValidationState />,
-      </ProtectedRoute>
-    ),
   },
 ]);
 

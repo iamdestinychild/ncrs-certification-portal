@@ -14,7 +14,6 @@ export default function useLogin() {
     onError: () => toast.error("Login Failed"),
   });
 
-  console.log(error)
 
   return {
     login,

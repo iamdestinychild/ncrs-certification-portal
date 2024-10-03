@@ -18,11 +18,9 @@ export async function logInUser(userDetails) {
 }
 
 export async function logOutUser() {
-  const response = await axios.delete(
-    `${BASE_URL}/auth/logout`,
-    {},
-    { withCredentials: true }
-  );
+  const response = await axios.delete(`${BASE_URL}/auth/logout`, {
+    withCredentials: true,
+  });
 
   return response;
 }
