@@ -35,7 +35,7 @@ function SignUp() {
     }),
     onSubmit: (values, { setSubmitting }) => {
       const userData = {
-        fullName: values.fullname,
+        fullname: values.fullname,
         email: values.email,
         password: values.password,
       };
