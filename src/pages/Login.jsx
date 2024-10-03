@@ -6,7 +6,7 @@ import Button from "../ui/Button";
 import CustomInput from "../ui/CustomInput";
 import Form from "../ui/Form";
 import MiniLoader from "../ui/MiniLoader";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useLogin from "../features/user/useLogin";
 
 function Login() {
@@ -79,6 +79,14 @@ function Login() {
           />
 
           <div className="flex mt-4 flex-col items-center justify-end gap-3">
+          <p>
+              Don&apos;t have an account?{" "}
+              <span className="font-semibold">
+                <Link className="text-[#1C5237]" to={"/register"}>
+                  Register
+                </Link>
+              </span>
+            </p>
             <Button
               disabled={formik.isSubmitting || !formik.isValid}
               type={"primary"}
