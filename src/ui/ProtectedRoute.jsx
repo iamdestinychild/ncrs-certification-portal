@@ -9,17 +9,14 @@ function ProtectedRoute({ children }) {
 
   const isLoading = isLoading1 || isLoading2;
 
-  const data = user || certificates;
-
   const error = error1 || error2;
 
   if (isLoading) return <Loader />;
 
   if (error) return <Navigate to={"/login"} replace />;
 
-  if (data && !isLoading && !error) return children;
+  if (user || certificates) return children;
 
-  return <Navigate to={"/login"} replace />;
 }
 
 export default ProtectedRoute;

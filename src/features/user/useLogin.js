@@ -11,7 +11,7 @@ export default function useLogin() {
     mutationFn: (userDetails) => logInUser(userDetails),
     mutationKey: ["loginUser"],
     onSuccess: () => toast.success("Log in Successful"),
-    onError: () => toast.error("Login Failed"),
+    onError: (err) => toast.error(err.response?.data?.msg),
   });
 
 

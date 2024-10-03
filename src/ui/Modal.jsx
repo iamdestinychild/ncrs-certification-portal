@@ -1,6 +1,4 @@
-import { useContext } from "react";
-import { cloneElement } from "react";
-import { useState } from "react";
+import { useContext, cloneElement, useState } from "react";
 import { HiX } from "react-icons/hi";
 import { createContext } from "react";
 import { createPortal } from "react-dom";
@@ -10,16 +8,23 @@ const ModalContext = createContext();
 
 function Modal({ children }) {
   const [openName, setOpenName] = useState("");
-  const close = () => setOpenName("");
-  const open = setOpenName;
+
+  const close = () => {
+    console.log("Closing modal");
+    setOpenName("");
+  };
+
+  const open = (name) => {
+    if (openName === "") {
+      console.log(`Opening modal: ${name}`);
+      setOpenName(name);
+    } else {
+      console.log("Modal is already open");
+    }
+  };
+
   return (
-    <ModalContext.Provider
-      value={{
-        openName,
-        open,
-        close,
-      }}
-    >
+    <ModalContext.Provider value={{ openName, open, close }}>
       {children}
     </ModalContext.Provider>
   );
@@ -28,7 +33,7 @@ function Modal({ children }) {
 function Open({ children, opens: opensWindowName }) {
   const { open } = useContext(ModalContext);
 
-  return cloneElement(children, { onClick: () => open(opensWindowName) })
+  return cloneElement(children, { onClick: () => open(opensWindowName) });
 }
 
 function Window({ children, name }) {
@@ -43,14 +48,13 @@ function Window({ children, name }) {
         ref={ref}
         className="relative mx-auto flex items-center justify-center rounded-lg bg-white p-6 shadow-lg transition-all duration-500"
       >
-        <button className="absolute right-3 top-3">
-          <HiX size={21} color="black" onClick={() => close()} />
+        <button className="absolute right-3 top-3" onClick={close}>
+          <HiX size={21} color="black" />
         </button>
-
         {cloneElement(children, { onCloseModal: close })}
       </div>
     </div>,
-    document.body,
+    document.body
   );
 }
 

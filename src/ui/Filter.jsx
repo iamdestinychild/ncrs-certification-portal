@@ -1,12 +1,10 @@
 import { useSearchParams } from "react-router-dom";
 import Select from "./CustomSelect";
 
-
 const options = [
   { value: "default", label: "Default" },
-  { value: "status", label: "Popularity (Ascending)" },
-  { value: "name-asc", label: "Sort by name (A-Z)" },
-  { value: "name-desc", label: "Sort by name (Z-A)" },
+  { value: "status-act", label: "Active" },
+  { value: "status-inc", label: "Inactive" },
 ];
 
 function Filter() {

@@ -3,15 +3,18 @@ import useFetchCertificates from "../features/certificates/useFetchCertificates"
 import Loader from "../ui/Loader";
 import TableList from "../ui/TableList";
 import ErrorPage from "../ui/ErrorPage";
-import Button from "../ui/Button";
-import Modal from "../ui/Modal";
 import CertificateOptions from "../ui/CertificateOptions";
 import Filter from "../ui/Filter";
+import { useSearchParams } from "react-router-dom";
 
 function Certificates() {
   const { certificates, isLoading, error, refetch } = useFetchCertificates();
   const [checkedItems, setCheckedItems] = useState({});
   const [checkAll, setCheckAll] = useState(false);
+  const [searchParams] = useSearchParams();
+
+  const filterBy = searchParams.get("filterBy")
+
 
   const handleCheck = (id) => {
     setCheckedItems((prev) => {
@@ -32,7 +35,7 @@ function Certificates() {
     const newCheckAll = !checkAll;
     const newCheckedItems = {};
     certificates.forEach((item) => {
-      newCheckedItems[item.certificate_id] = newCheckAll;
+      newCheckedItems[item._id] = newCheckAll;
     });
 
     setCheckedItems(newCheckedItems);
@@ -43,13 +46,26 @@ function Certificates() {
 
   if (error) return <ErrorPage onClick={() => refetch()} />;
 
+
+  const checkedIds = Object.keys(checkedItems).filter((id) => checkedItems[id])
+
+  const filteredCertificates = certificates.filter((certificate) => {
+    if (filterBy === "status-act") {
+      return certificate.status === "active"; // Assuming 'status' field represents the certificate's status
+    } else if (filterBy === "status-inc") {
+      return certificate.status === "inactive";
+    }
+    return true; // Return all if no specific filter is applied
+  });
+
+
   const EmptyCertificates = Boolean(certificates.length === 0);
 
   return (
     <div className="p-2 space-y-3">
       <div className="flex justify-between px-5">
         <Filter />
-        <CertificateOptions />
+        <CertificateOptions items={checkedIds} />
       </div>
       {/* <Modal>
         <Modal.Open opens={"add-certificate"}>
@@ -78,12 +94,13 @@ function Certificates() {
         </div>
         <ul className="flex flex-col gap-2">
           {!EmptyCertificates ? (
-            certificates.map((item) => (
+            filteredCertificates.map((item) => (
               <TableList
                 key={item.certificate_id}
+                id={item._id}
                 data={item}
                 hasCheck={true}
-                isChecked={!!checkedItems[item.certificate_id]}
+                isChecked={!!checkedItems[item._id]}
                 onCheck={handleCheck}
               />
             ))

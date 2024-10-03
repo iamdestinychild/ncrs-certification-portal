@@ -4,18 +4,24 @@ import { GoTrash } from "react-icons/go";
 import Modal from "./Modal";
 import AddCertificate from "../forms/AddCertificate";
 import ConfirmDelete from "./ConfirmDelete";
+import useDeleteCertificate from "../features/certificates/useDeleteCertificate";
 
-function CertificateOptions() {
+function CertificateOptions({items}) {
+
+  const noItems = Boolean(items?.length === 0)
+
+  console.log(items)
+  
   return (
     <div className="flex gap-4">
       <Modal>
         <Modal.Open opens={'suspendCertificate'}>
-          <Button icon={<CiNoWaitingSign />} type={"accent-red"}>
+          <Button disabled={noItems} icon={<CiNoWaitingSign />} type={"accent-red"}>
             Suspend
           </Button>
         </Modal.Open>
         <Modal.Open opens={'deleteCertificate'}>
-          <Button icon={<GoTrash />} type={"accent-red"}>
+          <Button disabled={noItems} icon={<GoTrash />} type={"accent-red"}>
             Delete
           </Button>
         </Modal.Open>
