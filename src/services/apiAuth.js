@@ -6,6 +6,7 @@ export async function signUpUser(userData) {
   
   console.log(userData);
   const response = await axios.post(`${BASE_URL}/auth/registration`, userData);
+  console.log(response.data)
   return response.data;
 }
 
