@@ -10,17 +10,16 @@ import { Toaster } from "react-hot-toast";
 import ValidationState from "./pages/ValidationState";
 import ResetPassword from "./pages/ResetPassword";
 import PageNotFound from "./pages/PageNotFound";
+import ProtectedRoute from "./ui/ProtectedRoute";
 
-const queryClient = new QueryClient(
-  {
-    defaultOptions:{
-      queries:{
-        retry: 2,
-        staleTime: 300000,
-      }
-    }
-  }
-);
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      retry: 2,
+      staleTime: 300000,
+    },
+  },
+});
 
 const router = createBrowserRouter([
   {
@@ -29,11 +28,19 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Dashboard />,
+        element: (
+          <ProtectedRoute>
+            <Dashboard />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "/certificates",
-        element: <Certificates />,
+        element: (
+          <ProtectedRoute>
+            <Certificates />,
+          </ProtectedRoute>
+        ),
       },
     ],
   },
@@ -51,7 +58,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/validate",
-    element: <Validate />,
+    element: (
+      <ProtectedRoute>
+        <Validate />,
+      </ProtectedRoute>
+    ),
   },
   {
     path: "*",
@@ -59,7 +70,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/validate/:id",
-    element: <ValidationState />,
+    element: (
+      <ProtectedRoute>
+        <ValidationState />,
+      </ProtectedRoute>
+    ),
   },
 ]);
 

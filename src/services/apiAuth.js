@@ -7,22 +7,19 @@ export async function signUpUser(userData) {
   const response = await axios.post(`${BASE_URL}/auth/registration`, userData, {
     withCredentials: true,
   });
-  console.log(response.data);
   return response.data;
 }
 
 export async function logInUser(userDetails) {
-  console.log(userDetails);
   const response = await axios.post(`${BASE_URL}/auth/login`, userDetails, {
     withCredentials: true,
   });
-  console.log(response.data);
   return response.data;
 }
 
 export async function logOutUser() {
   const response = await axios.delete(
-    `${BASE_URL}/logout`,
+    `${BASE_URL}/auth/logout`,
     {},
     { withCredentials: true }
   );

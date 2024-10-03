@@ -4,11 +4,11 @@ function Select({ options, value, onChange,  ...props }) {
       <select
         value={value}
         onChange={onChange}
-        className={`border p-2 text-xs w-40 sm:w-auto  rounded-sm bg-neutral-800 text-gray-50 shadow-sm`}
+        className={`border cursor-pointer focus:outline-none p-2 text-xs w-40 sm:w-auto  rounded-sm bg-white text-black shadow-sm`}
         {...props}
       >
         {options.map((option) => (
-          <option value={option.value} key={option.value}>
+          <option value={option.value} className="cursor-pointer" key={option.value}>
             {option.label}
           </option>
         ))}

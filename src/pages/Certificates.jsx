@@ -47,7 +47,7 @@ function Certificates() {
 
   return (
     <div className="p-2 space-y-3">
-      <div>
+      <div className="flex justify-between px-5">
         <Filter />
         <CertificateOptions />
       </div>

@@ -20,6 +20,5 @@ export async function getDashBoard() {
   const response = await axios.get(`${BASE_URL}/user/dashboard/`, {
     withCredentials: true,
   });
-  console.log(response.data);
   return response?.data;
 }

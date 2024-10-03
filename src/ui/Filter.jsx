@@ -3,8 +3,8 @@ import Select from "./CustomSelect";
 
 
 const options = [
-  { value: "popularity-desc", label: "Popularity (Descending)" },
-  { value: "popularity-asc", label: "Popularity (Ascending)" },
+  { value: "default", label: "Default" },
+  { value: "status", label: "Popularity (Ascending)" },
   { value: "name-asc", label: "Sort by name (A-Z)" },
   { value: "name-desc", label: "Sort by name (Z-A)" },
 ];
