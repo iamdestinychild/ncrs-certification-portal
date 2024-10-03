@@ -19,6 +19,7 @@ function ProtectedRoute({ children }) {
 
   if (data && !isLoading && !error) return children;
 
+  return <Navigate to={"/login"} replace />;
 }
 
 export default ProtectedRoute;
