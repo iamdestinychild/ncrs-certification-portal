@@ -2,7 +2,7 @@ import { CiCirclePlus, CiNoWaitingSign } from "react-icons/ci";
 import Button from "./Button";
 import { GoTrash } from "react-icons/go";
 import Modal from "./Modal";
-import AddCertificate from "../forms/addCertificate";
+import AddCertificate from "../forms/AddCertificate";
 import ConfirmDelete from "./ConfirmDelete";
 
 function CertificateOptions() {
