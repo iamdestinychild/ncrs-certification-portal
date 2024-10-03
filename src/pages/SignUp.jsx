@@ -50,7 +50,6 @@ function SignUp() {
     },
   });
 
-
   return (
     <div className="flex md:gap-20 lg:gap-2 flex-col items-center justify-center">
       <header className="w-full z-10 flex items-center justify-between py-3 px-6">

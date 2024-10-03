@@ -11,7 +11,16 @@ import ValidationState from "./pages/ValidationState";
 import ResetPassword from "./pages/resetPassword";
 import PageNotFound from "./pages/PageNotFound";
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient(
+  {
+    defaultOptions:{
+      queries:{
+        retry: 2,
+        staleTime: 300000,
+      }
+    }
+  }
+);
 
 const router = createBrowserRouter([
   {

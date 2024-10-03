@@ -1,10 +1,11 @@
-import useFetchCertificates from "../features/certificates/useFetchCertificates"
+import useDashboard from "../features/dashboard/useDashboard";
 import ErrorPage from "../ui/ErrorPage";
 import Loader from "../ui/Loader";
 import TableList from "../ui/TableList";
 
 function Dashboard() {
-  const { certificates, isLoading, error, refetch } = useFetchCertificates();
+const {data, isLoading, error, refetch} = useDashboard()
+
 
   if (isLoading) return <Loader />;
 
@@ -18,7 +19,7 @@ function Dashboard() {
 
       <h2 className="font-semibold">Recently Uploaded</h2>
       <div className="px-4 flex flex-col gap-4">
-        {certificates?.map((item) => (
+        {data?.map((item) => (
           <TableList key={item.id} data={item} />
         ))}
       </div>
