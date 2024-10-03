@@ -19,9 +19,9 @@ const {data, isLoading, error, refetch} = useDashboard()
 
       <h2 className="font-semibold">Recently Uploaded</h2>
       <div className="px-4 flex flex-col gap-4">
-        {data?.map((item) => (
+        {/* {data?.map((item) => (
           <TableList key={item.id} data={item} />
-        ))}
+        ))} */}
       </div>
     </div>
   );

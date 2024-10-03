@@ -7,8 +7,11 @@ export default function useDashboard() {
     queryFn: getDashBoard,
   });
 
+  const userDetails = data?.msg?.userDetails
+
   return {
     data,
+    userDetails,
     isLoading,
     error,
     refetch,

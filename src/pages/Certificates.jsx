@@ -55,20 +55,21 @@ function Certificates() {
         </Modal.Window>
 
         <div className="px-4 flex flex-col gap-4">
-          <div className="w-full gap-2 text-xs lg:text-sm py-2 px-4 flex items-center font-semibold">
-            <div className="w-1/6">
+          <div className="w-full gap-2 text-xs lg:text-sm py-2 px-4 text-center flex items-center font-semibold">
+            
               <input
                 className="cursor-pointer"
                 checked={checkAll}
                 onChange={handleCheckAll}
                 type="checkbox"
               />
-            </div>
+          
             <p className="w-1/4">Name</p>
-            <p className="w-1/4">Accepted</p>
-            <p className="w-1/4">ID</p>
-            <p className="w-1/4">Date registered</p>
+            <p className="w-1/4">Certificate Title</p>
+            <p className="w-1/4">Certificate Id</p>
+            <p className="w-1/4">Date Awarded</p>
             <p className="w-1/4">Status</p>
+            <p className="w-12"></p>
           </div>
           <div>
             {!EmptyCertificates ? (

@@ -3,7 +3,7 @@ import { fetchCertificates } from "../../services/apiGetCertificates";
 
 export default function useFetchCertificates() {
   const {
-    data: certificates,
+    data,
     isLoading,
     error,
     refetch,
@@ -12,7 +12,7 @@ export default function useFetchCertificates() {
     queryFn: fetchCertificates,
   })
 
-
+const certificates = data?.certifications
 
   return {
     certificates,
