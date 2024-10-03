@@ -8,7 +8,7 @@ import Validate from "./pages/Validate";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "react-hot-toast";
 import ValidationState from "./pages/ValidationState";
-import ResetPassword from "./pages/resetPassword";
+import ResetPassword from "./pages/ResetPassword";
 import PageNotFound from "./pages/PageNotFound";
 
 const queryClient = new QueryClient(

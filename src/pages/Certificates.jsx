@@ -5,6 +5,8 @@ import TableList from "../ui/TableList";
 import ErrorPage from "../ui/ErrorPage";
 import Button from "../ui/Button";
 import Modal from "../ui/Modal";
+import CertificateOptions from "../ui/CertificateOptions";
+import Filter from "../ui/Filter";
 
 function Certificates() {
   const { certificates, isLoading, error, refetch } = useFetchCertificates();
@@ -45,51 +47,53 @@ function Certificates() {
 
   return (
     <div className="p-2 space-y-3">
-      <Modal>
+      <div>
+        <Filter />
+        <CertificateOptions />
+      </div>
+      {/* <Modal>
         <Modal.Open opens={"add-certificate"}>
           <Button type={"primary"}>Add</Button>
         </Modal.Open>
 
         <Modal.Window name={"add-certificate"}>
           <div className="w-40 bg-white h-44"></div>
-        </Modal.Window>
+        </Modal.Window> */}
 
-        <div className="px-4 flex flex-col gap-4">
-          <div className="w-full gap-2 text-xs lg:text-sm py-2 px-4 text-center flex items-center font-semibold">
-            
-              <input
-                className="cursor-pointer"
-                checked={checkAll}
-                onChange={handleCheckAll}
-                type="checkbox"
-              />
-          
-            <p className="w-1/4">Name</p>
-            <p className="w-1/4">Certificate Title</p>
-            <p className="w-1/4">Certificate Id</p>
-            <p className="w-1/4">Date Awarded</p>
-            <p className="w-1/4">Status</p>
-            <p className="w-12"></p>
-          </div>
-          <div>
-            {!EmptyCertificates ? (
-              certificates.map((item) => (
-                <TableList
-                  key={item.certificate_id}
-                  data={item}
-                  hasCheck={true}
-                  isChecked={!!checkedItems[item.certificate_id]}
-                  onCheck={handleCheck}
-                />
-              ))
-            ) : (
-              <p className=" text-center mt-20 text-3xl">
-                No Cerificates Added yet.
-              </p>
-            )}
-          </div>
+      <div className="px-4 flex flex-col gap-4">
+        <div className="w-full gap-2 text-xs lg:text-sm py-2 px-4 text-center flex items-center font-semibold">
+          <input
+            className="cursor-pointer"
+            checked={checkAll}
+            onChange={handleCheckAll}
+            type="checkbox"
+          />
+
+          <p className="w-1/4">Name</p>
+          <p className="w-1/4">Certificate Title</p>
+          <p className="w-1/4">Certificate Id</p>
+          <p className="w-1/4">Date Awarded</p>
+          <p className="w-1/4">Status</p>
+          <p className="w-12"></p>
         </div>
-      </Modal>
+        <ul className="flex flex-col gap-2">
+          {!EmptyCertificates ? (
+            certificates.map((item) => (
+              <TableList
+                key={item.certificate_id}
+                data={item}
+                hasCheck={true}
+                isChecked={!!checkedItems[item.certificate_id]}
+                onCheck={handleCheck}
+              />
+            ))
+          ) : (
+            <li className=" text-center mt-20 text-3xl">
+              No Cerificates Added yet.
+            </li>
+          )}
+        </ul>
+      </div>
     </div>
   );
 }

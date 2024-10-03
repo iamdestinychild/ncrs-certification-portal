@@ -19,7 +19,7 @@ function SideBar() {
       </div>
       <div className="border-t-2 p-6">
         <Button
-          icon={<LuLogOut />}
+          icon={<LuLogOut className="text-red-500" />}
           disabled={isLoading}
           onClick={() => logout()}
           type={"logout"}

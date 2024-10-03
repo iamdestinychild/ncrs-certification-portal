@@ -6,7 +6,7 @@ function TableList({ data, hasCheck = false, isChecked, onCheck }) {
   const { name, certificate_id: id, status, date_awarded, title } = data;
 
   return (
-    <div className="w-full gap-2 text-xs text-center lg:text-sm hover:bg-gray-100 py-2 px-4 rounded-md flex items-center bg-gray-50">
+    <li className="w-full gap-2 text-xs text-center lg:text-sm hover:bg-gray-100 py-2 px-4 rounded-md flex items-center bg-gray-50">
       {hasCheck && (
         <input
           className="cursor-pointer"
@@ -33,7 +33,7 @@ function TableList({ data, hasCheck = false, isChecked, onCheck }) {
           <Menus.Button>Suspend</Menus.Button>
         </Menus.List>
       </Menus>
-    </div>
+    </li>
   );
 }
 
