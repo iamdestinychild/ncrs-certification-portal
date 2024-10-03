@@ -1,0 +1,50 @@
+{
+  "certificates": [
+    {
+      "id": "1a2b3c4d5e6f7g8h9i0j",
+      "name": "John Doe",
+      "certificate_id": "CERT-2023-001",
+      "certificate_title": "High School Certificate",
+      "status": "pending",
+      "active": true,
+      "dateCreated": "2023-01-15T12:00:00Z"
+    },
+    {
+      "id": "7h8i9j0k1l2m3n4o5p6q",
+      "name": "Jane Smith",
+      "certificate_id": "CERT-2023-002",
+      "certificate_title": "Bachelor's Degree",
+      "status": "approved",
+      "active": true,
+      "dateCreated": "2023-02-20T09:30:00Z"
+    },
+    {
+      "id": "3n4o5p6q7r8s9t0u1v2w",
+      "name": "Robert Brown",
+      "certificate_id": "CERT-2023-003",
+      "certificate_title": "Master's Degree",
+      "status": "pending",
+      "active": false,
+      "dateCreated": "2023-03-10T15:45:00Z"
+    },
+    {
+      "id": "9t0u1v2w3x4y5z6a7b8c",
+      "name": "Alice Green",
+      "certificate_id": "CERT-2023-004",
+      "certificate_title": "PhD",
+      "status": "rejected",
+      "active": false,
+      "dateCreated": "2023-04-05T08:20:00Z"
+    }
+  ],
+
+  "users": [
+    {
+      "id": "1a2b3c4d5e6f7g8h9i0",
+      "name": "Jane Smith",
+      "isAuthenticated": true,
+      "email": "jane.smith@example.com",
+      "password": "12345678"
+    }
+  ]
+}
