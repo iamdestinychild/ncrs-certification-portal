@@ -10,17 +10,13 @@ function Modal({ children }) {
   const [openName, setOpenName] = useState("");
 
   const close = () => {
-    console.log("Closing modal");
     setOpenName("");
   };
 
   const open = (name) => {
     if (openName === "") {
-      console.log(`Opening modal: ${name}`);
       setOpenName(name);
-    } else {
-      console.log("Modal is already open");
-    }
+    } 
   };
 
   return (

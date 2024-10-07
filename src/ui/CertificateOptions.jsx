@@ -10,7 +10,6 @@ function CertificateOptions({items}) {
 
   const noItems = Boolean(items?.length === 0)
 
-  console.log(items)
   
   return (
     <div className="flex gap-4">
