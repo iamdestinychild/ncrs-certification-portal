@@ -4,10 +4,14 @@ import Loader from "./Loader";
 import useFetchCertificates from "../features/certificates/useFetchCertificates";
 
 function ProtectedRoute({ children }) {
-  const { data: user, isLoading1, error1 } = useDashboard();
-  const { certificates, isLoading2, error2 } = useFetchCertificates();
+  const { data: user, isLoading:isLoading1, error:error1 } = useDashboard();
+  const { certificates, isLoading:isLoading2, error:error2 } = useFetchCertificates();
+
+  console.log(error1)
 
   const isLoading = isLoading1 || isLoading2;
+
+  console.log(isLoading)
 
   const error = error1 || error2;
 

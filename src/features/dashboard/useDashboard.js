@@ -7,6 +7,10 @@ export default function useDashboard() {
     queryFn: getDashBoard,
   });
 
+  console.log(error)
+
+  console.log(isLoading)
+
   const userDetails = data?.msg?.userDetails
 
   return {
